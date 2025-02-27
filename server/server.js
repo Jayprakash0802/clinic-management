@@ -15,11 +15,12 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 app.use(cors({
-  origin: '*',
-  credentials: true
+  origin: ['https://clinic-management-ss3v.vercel.app', 'https://clinic-management-fawn.vercel.app'],
+  credentials: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Content-Type,Authorization'
 }));
 
-app.options('*', cors());
 app.use(express.json());
 
 app.use('/clinics', clinicRoutes);
